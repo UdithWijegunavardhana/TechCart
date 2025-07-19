@@ -1,4 +1,3 @@
-// app/redux/slices/auth/auth.api.ts
 import { AxiosResponse } from 'axios';
 import axios from 'axios';
 import { SignInRequest, SignInResponse } from './auth.api.types';
