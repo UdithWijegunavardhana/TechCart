@@ -70,6 +70,7 @@ const InputField: React.FC<InputFieldProps> = ({
         style={[
           styles.input,
           inputStyle,
+          // eslint-disable-next-line react-native/no-inline-styles
           {paddingLeft: iconLeft ? 36 : 12, paddingRight: iconRight ? 36 : 12},
         ]}
         secureTextEntry={internalSecure}
