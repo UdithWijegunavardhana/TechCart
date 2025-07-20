@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
+import colors from '../theme/colors';
+
 interface InputFieldProps extends TextInputProps {
   value?: string;
   onChangeText?: (text: string) => void;
@@ -57,7 +59,7 @@ const InputField: React.FC<InputFieldProps> = ({
       inputRange: [0, 1],
       outputRange: [16, 12],
     }),
-    color: '#999',
+    color: colors.placeholder,
   };
 
   return (
@@ -85,7 +87,7 @@ const InputField: React.FC<InputFieldProps> = ({
           <Feather
             name={internalSecure ? 'eye' : 'eye-off'}
             size={20}
-            color="#666"
+            color={colors.textSecondary}
           />
         </Pressable>
       )}
@@ -99,7 +101,7 @@ const InputField: React.FC<InputFieldProps> = ({
 const styles = StyleSheet.create({
   container: {
     height: 56,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: colors.inputBackground,
     borderRadius: 12,
     justifyContent: 'center',
     marginVertical: 8,
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingTop: 20,
     paddingBottom: 8,
-    color: '#000',
+    color: colors.black,
   },
   leftIcon: {
     position: 'absolute',

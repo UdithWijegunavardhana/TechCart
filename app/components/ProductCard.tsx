@@ -2,6 +2,8 @@ import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
+import colors from '../theme/colors';
+
 interface ProductCardProps {
   title: string;
   price: number;
@@ -27,7 +29,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             key={i}
             name="star"
             size={14}
-            color={i < rating ? '#F4C430' : '#ccc'}
+            color={i < rating ? colors.starFilled : colors.starEmpty}
           />
         ))}
       </View>
@@ -39,7 +41,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    backgroundColor: '#F9F9F9',
+    backgroundColor: colors.background,
     borderRadius: 12,
     padding: 12,
     margin: 8,

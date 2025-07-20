@@ -11,6 +11,8 @@ import {
   DimensionValue,
 } from 'react-native';
 
+import colors from '../theme/colors';
+
 interface ButtonProps {
   title: string;
   onPress: (event: GestureResponderEvent) => void;
@@ -37,15 +39,15 @@ const Button: React.FC<ButtonProps> = ({
   textStyle,
   iconLeft,
   iconRight,
-  backgroundColor = '#000',
-  textColor = '#fff',
+  backgroundColor = colors.black,
+  textColor = colors.white,
   borderRadius = 12,
   height = 48,
 }) => {
   const containerStyle = StyleSheet.flatten([
     styles.base,
     {
-      backgroundColor: disabled ? '#ccc' : backgroundColor,
+      backgroundColor: disabled ? colors.disabled : backgroundColor,
       borderRadius,
       height,
       width: fullWidth ? ('100%' as DimensionValue) : undefined,
