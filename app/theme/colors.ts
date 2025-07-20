@@ -16,10 +16,10 @@ const colors = {
   primaryLight: '#A5F1C3',
 
   // Input
-  inputBackground: '#F0F0F0',
+  inputBackground: '#f2f2f2',
   inputBorder: '#E0E0E0',
 
-  // Icons / UI
+  // Icons
   starFilled: '#F4C430',
   starEmpty: '#CCCCCC',
   border: '#EDEDED',
