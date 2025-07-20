@@ -31,7 +31,7 @@ This project was created as a practical assessment and uses real APIs to showcas
 <img src="./screenshots/home.png" width="300" />
 
 ### Product Details
-<img src="./screenshots/productDetail.png" width="300" />
+<img src="./screenshots/productDetails.png" width="300" />
 
 ### Cart 
 <img src="./screenshots/cart.png" width="300" />
@@ -43,7 +43,7 @@ This project was created as a practical assessment and uses real APIs to showcas
 <img src="./screenshots/search.png" width="300" />
 
 ### Recent Search 
-<img src="./screenshots/recentSearch.png" width="300" />
+<img src="./screenshots/recentSearches.png" width="300" />
 
 ---
 
