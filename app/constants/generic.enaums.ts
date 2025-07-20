@@ -1,4 +1,5 @@
 // TODO: improve sagas to use them
+
 export enum ApiRequestStatus {
   NONE = 'NONE',
   IN_PROGRESS = 'IN_PROGRESS',
@@ -12,14 +13,4 @@ export enum HttpCodes {
   FORBIDDEN = 403,
   INTERNAL_SERVER_ERROR = 500,
   CONTENT_UNAVAILABLE = 404,
-}
-
-export enum DeviceOrientationTypes {
-  'PORTRAIT' = 'PORTRAIT',
-  'PORTRAIT-UPSIDEDOWN' = 'PORTRAIT-UPSIDEDOWN',
-  'LANDSCAPE-LEFT' = 'LANDSCAPE-LEFT',
-  'LANDSCAPE-RIGHT' = 'LANDSCAPE-RIGHT',
-  'FACE-UP' = 'FACE-UP',
-  'FACE-DOWN' = 'FACE-DOWN',
-  'UNKNOWN' = 'UNKNOWN',
 }
