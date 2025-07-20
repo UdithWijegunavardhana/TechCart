@@ -59,9 +59,9 @@ const SignInScreen = () => {
               />
             )}
           />
-          {errors.username && (
+          {errors.username ? (
             <Text style={styles.errorText}>{errors.username.message}</Text>
-          )}
+          ) : null}
           <Controller
             control={control}
             name="password"
@@ -89,9 +89,9 @@ const SignInScreen = () => {
               />
             )}
           />
-          {errors.password && (
+          {errors.password ? (
             <Text style={styles.errorText}>{errors.password.message}</Text>
-          )}
+          ) : null}
           <Button
             title="Log In"
             onPress={handleSubmit(onSubmit)}
