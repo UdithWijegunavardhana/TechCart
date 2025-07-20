@@ -1,3 +1,4 @@
+// TODO: improve sagas to use them
 export enum ApiRequestStatus {
   NONE = 'NONE',
   IN_PROGRESS = 'IN_PROGRESS',
