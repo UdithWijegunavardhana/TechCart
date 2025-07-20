@@ -3,7 +3,7 @@ import {ActivityIndicator, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import BottomTabNavigator from './BottomTabNavigator';
 import {useAuth} from '../contexts/AuthContext';
-import AuthStack from './AuthStack';
+import AuthStack from './stackNavigators/AuthStack';
 import {useDispatch} from 'react-redux';
 import {authSagaActions} from '../features/auth/saga/authSagaActions';
 

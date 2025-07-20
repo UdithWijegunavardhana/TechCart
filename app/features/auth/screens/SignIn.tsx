@@ -73,6 +73,7 @@ const SignInScreen = () => {
                 onBlur={onBlur}
                 value={value}
                 secureTextEntry={!showPassword}
+                secureTextEntryToggle
                 iconLeft={
                   <Feather name="lock" size={18} color={colors.textSecondary} />
                 }

@@ -19,7 +19,7 @@ import {
   selectHomeLoading,
   selectHomeProducts,
 } from '../redux/homeSelectors';
-import {HomeStackParamList} from '../../../navigation/HomeStack';
+import {HomeStackParamList} from '../../../navigation/stackNavigators/HomeStack';
 import {homeSagaActions} from '../saga/homeSagaActions';
 import LoadingScreen from '../../../components/LoadingScreen';
 import {HomeStrings} from '../constants';
