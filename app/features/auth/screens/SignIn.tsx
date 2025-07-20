@@ -15,7 +15,7 @@ import InputField from '../../../components/InputField';
 import Button from '../../../components/Button';
 import {FormData, SignInStrings} from '../consts';
 import {passwordRules, usernameRules} from '../validation';
-import colors from '../../../theme/colours';
+import colors from '../../../theme/colors';
 
 const SignInScreen = () => {
   const {login, loading} = useAuth();

@@ -1,5 +1,6 @@
 import React, {createContext, useContext, ReactNode, useMemo} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
 import {RootState} from '../redux/store';
 import {authSagaActions} from '../features/auth/saga/authSagaActions';
 
@@ -30,7 +31,6 @@ export const AuthProvider = ({children}: {children: ReactNode}) => {
       loading,
       error,
       login: (username: string, password: string) => {
-        console.log('🟩 context', username, password);
         dispatch(authSagaActions.login({username, password}));
       },
       logout: () => {
