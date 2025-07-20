@@ -22,6 +22,9 @@ import {
 import {HomeStackParamList} from '../../../navigation/HomeStack';
 import {homeSagaActions} from '../saga/homeSagaActions';
 import LoadingScreen from '../../../components/LoadingScreen';
+import {HomeStrings} from '../constants';
+import colors from '../../../theme/colors';
+import ErrorState from '../../../components/errorState';
 
 const HomeScreen = () => {
   type HomeNavigationProp = StackNavigationProp<HomeStackParamList>;
@@ -31,7 +34,7 @@ const HomeScreen = () => {
 
   const products = useSelector(selectHomeProducts);
   const loading = useSelector(selectHomeLoading);
-  const error = useSelector(selectHomeError);
+  const failedToFetch = useSelector(selectHomeError);
 
   useEffect(() => {
     dispatch(homeSagaActions.fetchProducts());
@@ -47,7 +50,7 @@ const HomeScreen = () => {
             style={styles.avatar}
           />
           <View>
-            <Text style={styles.greeting}>Good Morning</Text>
+            <Text style={styles.greeting}>{HomeStrings.good_morning_text}</Text>
             <Text style={styles.name}>John!</Text>
           </View>
         </View>
@@ -60,7 +63,8 @@ const HomeScreen = () => {
           </View>
         </TouchableOpacity>
       </View>
-      <Text style={styles.sectionTitle}>What’s New</Text>
+      <Text style={styles.sectionTitle}>{HomeStrings.whats_new}</Text>
+      {failedToFetch ? <ErrorState message={failedToFetch} /> : null}
       <FlatList
         data={products}
         keyExtractor={(_, index) => index.toString()}
@@ -85,7 +89,7 @@ const HomeScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {flex: 1, backgroundColor: '#fff'},
+  container: {flex: 1, backgroundColor: colors.white},
   header: {
     paddingHorizontal: 16,
     paddingTop: 12,
@@ -95,11 +99,11 @@ const styles = StyleSheet.create({
   },
   userInfo: {flexDirection: 'row', alignItems: 'center'},
   avatar: {width: 40, height: 40, borderRadius: 20, marginRight: 12},
-  greeting: {fontSize: 14, color: '#666'},
+  greeting: {fontSize: 14, color: colors.textSecondary},
   name: {fontSize: 20, fontWeight: 'bold'},
   cart: {
     position: 'relative',
-    backgroundColor: '#F1F1F1',
+    backgroundColor: colors.background,
     padding: 8,
     borderRadius: 12,
   },
@@ -114,7 +118,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  badgeText: {color: '#fff', fontSize: 10},
+  badgeText: {color: colors.white, fontSize: 10},
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
