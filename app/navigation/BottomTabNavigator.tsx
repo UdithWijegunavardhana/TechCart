@@ -1,10 +1,9 @@
-// app/navigation/BottomTabNavigator.tsx
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Feather from 'react-native-vector-icons/Feather';
-import HomeScreen from '../features/home/screens/Home';
 import SearchScreen from '../features/search/screens/Search';
 import ProfileScreen from '../features/profile/screens/Profile';
+import HomeStack from './HomeStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,7 +35,7 @@ const BottomTabNavigator = () => {
         tabBarActiveTintColor: '#000',
         tabBarInactiveTintColor: '#888',
       })}>
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen name="Search" component={SearchScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
