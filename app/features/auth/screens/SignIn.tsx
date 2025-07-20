@@ -4,8 +4,8 @@ import {useForm, Controller} from 'react-hook-form';
 import Feather from 'react-native-vector-icons/Feather';
 
 import {useAuth} from '../../../contexts/AuthContext';
-import InputField from '../../../components/InputField/InputField';
-import Button from '../../../components/Button/Button';
+import InputField from '../../../components/InputField';
+import Button from '../../../components/Button';
 import {FormData} from '../consts';
 
 const SignInScreen = () => {
