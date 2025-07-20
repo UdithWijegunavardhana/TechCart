@@ -4,7 +4,7 @@ import Feather from 'react-native-vector-icons/Feather';
 
 import SearchScreen from '../features/search/screens/Search';
 import ProfileScreen from '../features/profile/screens/Profile';
-import HomeStack from './HomeStack';
+import HomeStack from './stackNavigators/HomeStack';
 
 const Tab = createBottomTabNavigator();
 
