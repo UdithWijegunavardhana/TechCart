@@ -10,57 +10,36 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
-import ProductCard from '../../../components/ProductCard';
 import {useDispatch, useSelector} from 'react-redux';
+import {StackNavigationProp} from '@react-navigation/stack';
+
+import ProductCard from '../../../components/ProductCard';
 import {
   selectHomeError,
   selectHomeLoading,
   selectHomeProducts,
 } from '../redux/homeSelectors';
-import {getProductsRequest, getProductsSuccess} from '../redux/homeSlice';
-import {StackNavigationProp} from '@react-navigation/stack';
 import {HomeStackParamList} from '../../../navigation/HomeStack';
-
-const MOCK_PRODUCTS = [
-  {
-    id: 1,
-    title: 'iPhone 15',
-    price: 1598,
-    rating: 3,
-    image: 'https://dummyjson.com/image/i/products/1/thumbnail.jpg',
-  },
-  {
-    id: 2,
-    title: 'iPhone 14',
-    price: 1598,
-    rating: 4,
-    image: 'https://dummyjson.com/image/i/products/2/thumbnail.jpg',
-  },
-  {
-    id: 3,
-    title: 'iPhone 16 Pro',
-    price: 1999,
-    rating: 5,
-    image: 'https://dummyjson.com/image/i/products/2/thumbnail.jpg',
-  },
-];
+import {homeSagaActions} from '../saga/homeSagaActions';
+import LoadingScreen from '../../../components/LoadingScreen';
 
 const HomeScreen = () => {
   type HomeNavigationProp = StackNavigationProp<HomeStackParamList>;
-  const navigation = useNavigation<HomeNavigationProp>();
+
   const dispatch = useDispatch();
+  const navigation = useNavigation<HomeNavigationProp>();
+
   const products = useSelector(selectHomeProducts);
-  // const loading = useSelector(selectHomeLoading);
-  // const error = useSelector(selectHomeError);
+  const loading = useSelector(selectHomeLoading);
+  const error = useSelector(selectHomeError);
 
   useEffect(() => {
-    dispatch(getProductsRequest());
-  }, []);
-
-  console.log('🟩 items:', products);
+    dispatch(homeSagaActions.fetchProducts());
+  }, [dispatch]);
 
   return (
     <SafeAreaView style={styles.container}>
+      {loading ? <LoadingScreen /> : null}
       <View style={styles.header}>
         <View style={styles.userInfo}>
           <Image
@@ -83,7 +62,7 @@ const HomeScreen = () => {
       </View>
       <Text style={styles.sectionTitle}>What’s New</Text>
       <FlatList
-        data={MOCK_PRODUCTS}
+        data={products}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({item}) => (
           <ProductCard

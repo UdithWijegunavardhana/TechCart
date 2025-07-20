@@ -1,4 +1,5 @@
 import { AxiosError } from 'axios';
+
 import { HomeProductsResponse } from './home.api.types';
 import HomeProductApi from './home.api';
 
