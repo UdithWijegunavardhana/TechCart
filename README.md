@@ -25,7 +25,7 @@ This project was created as a practical assessment and uses real APIs to showcas
 ## 📱 Screenshots
 
 ### Login Screen
-<img src="./screenshots/login.png" width="300" />
+<img src="./screenshots/signIn.png" width="300" />
 
 ### Home Screen
 <img src="./screenshots/home.png" width="300" />
