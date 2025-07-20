@@ -7,6 +7,7 @@ interface ErrorStateProps {
   onRetry?: () => void;
 }
 
+// TODO: Move all strings, use color const.
 const ErrorState: React.FC<ErrorStateProps> = ({message = '', onRetry}) => {
   return (
     <View style={styles.container}>
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   messageTop: {
-    fontSize: 20,
+    fontSize: 16,
     color: '#333',
     marginTop: 12,
   },

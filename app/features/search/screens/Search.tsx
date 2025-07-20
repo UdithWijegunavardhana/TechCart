@@ -22,6 +22,7 @@ const dummyProducts = [
   },
 ];
 
+// TODO: Move all strings, use color const, API integration.
 const SearchScreen = () => {
   const [query, setQuery] = useState('');
   const [filteredResults, setFilteredResults] = useState(dummyProducts);

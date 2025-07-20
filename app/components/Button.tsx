@@ -29,6 +29,7 @@ interface ButtonProps {
   height?: number;
 }
 
+// TODO: use color const.
 const Button: React.FC<ButtonProps> = ({
   title,
   onPress,

@@ -10,7 +10,11 @@ import {
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
+import {useAuth} from '../../../contexts/AuthContext';
+
+// TODO: Move all strings, use color const, API integration.
 const ProfileScreen = () => {
+  const {logout} = useAuth();
   const user = {
     name: 'John Doe',
     email: 'john.doe@example.com',
@@ -58,7 +62,7 @@ const ProfileScreen = () => {
             </TouchableOpacity>
           ))}
         </ScrollView>
-        <TouchableOpacity style={styles.logoutButton}>
+        <TouchableOpacity style={styles.logoutButton} onPress={() => logout()}>
           <Text style={styles.logoutText}>Log out</Text>
         </TouchableOpacity>
       </View>

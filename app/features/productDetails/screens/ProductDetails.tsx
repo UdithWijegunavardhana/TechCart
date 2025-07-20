@@ -13,12 +13,13 @@ import Feather from 'react-native-vector-icons/Feather';
 import Slider from '@react-native-community/slider';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import {HomeStackParamList} from '../../../navigation/HomeStack';
+import {HomeStackParamList} from '../../../navigation/stackNavigators/HomeStack';
 
 const {width} = Dimensions.get('window');
 
 type Props = NativeStackScreenProps<HomeStackParamList, 'ProductDetail'>;
 
+// TODO: Move all strings, use color const, API integration.
 const ProductDetailsScreen: React.FC<Props> = ({navigation, route}) => {
   const {productId} = route.params;
   const [quantity, setQuantity] = useState(1);

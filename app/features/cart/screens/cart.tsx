@@ -18,6 +18,7 @@ import {
 } from '../utils';
 import CartItem from '../components/CartItem';
 
+// TODO: Move all strings, use color const.
 function CartScreen() {
   const navigation = useNavigation();
   const [cartItems, setCartItems] = useState(dummyCartData);
