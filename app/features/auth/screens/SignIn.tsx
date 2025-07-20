@@ -13,7 +13,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import {useAuth} from '../../../contexts/AuthContext';
 import InputField from '../../../components/InputField';
 import Button from '../../../components/Button';
-import {FormData, SignInStrings} from '../consts';
+import {FormData, SignInStrings} from '../constants';
 import {passwordRules, usernameRules} from '../validation';
 import colors from '../../../theme/colors';
 
