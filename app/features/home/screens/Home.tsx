@@ -13,7 +13,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {StackNavigationProp} from '@react-navigation/stack';
 
-import ProductCard from '../../../components/ProductCard';
+import ProductCard from '../components/ProductCard';
 import {
   selectHomeError,
   selectHomeLoading,
