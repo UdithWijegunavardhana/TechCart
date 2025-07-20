@@ -1,16 +1,11 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {useAuth} from '../../../contexts/AuthContext';
-import Button from '../../../components/Button';
 
-const ProfileScreen = () => {
-  const {logout} = useAuth();
-
+const CartScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Profile Screen</Text>
-      <Button title="Logout" onPress={logout} />
+      <Text style={styles.text}>Cart Screen</Text>
     </SafeAreaView>
   );
 };
@@ -20,4 +15,4 @@ const styles = StyleSheet.create({
   text: {fontSize: 20},
 });
 
-export default ProfileScreen;
+export default CartScreen;
