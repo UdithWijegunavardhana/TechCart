@@ -1,10 +1,10 @@
+import {AxiosError} from 'axios';
+
 import AuthApi from './auth.api';
 import {SignInRequest, SignInResponse} from './auth.api.types';
-import {AxiosError} from 'axios';
 
 const AuthService = {
   login: async (data: SignInRequest): Promise<SignInResponse> => {
-    console.log('🟩 data in service:', data);
     try {
       const response = await AuthApi.loginAPI(data);
       return response.data;

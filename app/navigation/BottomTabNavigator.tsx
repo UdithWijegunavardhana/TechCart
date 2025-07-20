@@ -1,6 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Feather from 'react-native-vector-icons/Feather';
+
 import SearchScreen from '../features/search/screens/Search';
 import ProfileScreen from '../features/profile/screens/Profile';
 import HomeStack from './HomeStack';

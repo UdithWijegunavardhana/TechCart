@@ -53,7 +53,6 @@ const SearchScreen = () => {
           />
         </View>
 
-        {/* Conditional Rendering */}
         {query === '' ? (
           <Text style={styles.placeholder}>Start typing to search...</Text>
         ) : filteredResults.length > 0 ? (

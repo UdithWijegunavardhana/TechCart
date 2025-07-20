@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import axios from 'axios';
+
 import { SignInRequest, SignInResponse } from './auth.api.types';
 
 const LOGIN_ENDPOINT = 'https://dummyjson.com/auth/login';

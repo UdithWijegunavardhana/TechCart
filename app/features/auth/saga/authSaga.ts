@@ -1,4 +1,5 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
+
 import AuthService from '../api/auth.service';
 import {authSagaActions} from './authSagaActions';
 import {loginSuccess, loginFailure, logout} from '../redux/authSlice';
@@ -14,7 +15,13 @@ function* loginSaga(
       AuthService.login,
       action.payload,
     );
-    yield put(loginSuccess({token: response.accessToken, user: response}));
+    yield put(
+      loginSuccess({
+        token: response.accessToken,
+        refreshToken: response.refreshToken ?? '',
+        user: response,
+      }),
+    );
     yield call(
       [storage, 'set'],
       StorageKeys.ACCESS_TOKEN,
