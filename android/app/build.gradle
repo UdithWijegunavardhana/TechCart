@@ -3,6 +3,18 @@ apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
+project.ext.envConfigFiles = [
+    proddebug: ".env",
+    prodrelease: ".env",
+    uatrelease: ".env.uat",
+    uatdebug: ".env.uat",
+    qarelease: ".env.qa",
+    qadebug: ".env.qa",
+    devrelease: ".env.dev",
+    devdebug: ".env.dev",
+]
+
+// apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -93,6 +105,47 @@ android {
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'
+        }
+        release {
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                storePassword MYAPP_UPLOAD_STORE_PASSWORD
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+            }
+        }
+    }
+    flavorDimensions "env"
+    productFlavors {
+        dev {
+            dimension "env"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+            signingConfig signingConfigs.debug
+            resValue "string", "app_name", "TechCart Dev"
+            resValue "string", "build_config_package", "com.techcart"
+        }
+        qa {
+            dimension "env"
+            applicationIdSuffix ".qa"
+            versionNameSuffix "-qa"
+            signingConfig signingConfigs.debug
+            resValue "string", "app_name", "TechCart QA"
+            resValue "string", "build_config_package", "com.techcart"
+        }
+        uat {
+            dimension "env"
+            applicationIdSuffix ".uat"
+            versionNameSuffix "-uat"
+            signingConfig signingConfigs.debug
+            resValue "string", "app_name", "TechCart UAT"
+            resValue "string", "build_config_package", "com.techcart"
+        }
+        prod {
+            dimension "env"
+            signingConfig signingConfigs.release
+            resValue "string", "app_name", "TechCart"
+            resValue "string", "build_config_package", "com.techcart"
         }
     }
     buildTypes {

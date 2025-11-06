@@ -31,6 +31,7 @@
 		B92E384F39EADE218FFD51B8 /* libPods-TechCart Dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B57D08275A533E51A0B13683 /* libPods-TechCart Dev.a */; };
 		C61BBBEB954EE3ABFE0D636E /* libPods-TechCart QA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979091A32D42D239FAF2AAC0 /* libPods-TechCart QA.a */; };
 		E04FF7D7075FEAFD413E456A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		19FEA9AB6F5B4DFFBCD7FEC3 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 02871F99193243B08945B986 /* Config.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED475B99C63BFFDF91243DAA /* Pods-TechCart Dev.debug-qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TechCart Dev.debug-qa.xcconfig"; path = "Target Support Files/Pods-TechCart Dev/Pods-TechCart Dev.debug-qa.xcconfig"; sourceTree = "<group>"; };
 		FCFDB94BCCED70F2AB07640E /* Pods-TechCart UAT.release-prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TechCart UAT.release-prod.xcconfig"; path = "Target Support Files/Pods-TechCart UAT/Pods-TechCart UAT.release-prod.xcconfig"; sourceTree = "<group>"; };
+		02871F99193243B08945B986 /* Config.xcconfig */ = {isa = PBXFileReference; name = "Config.xcconfig"; path = "Config.xcconfig"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.xcconfig; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				02871F99193243B08945B986 /* Config.xcconfig */,
 				13B07FAE1A68108700A75B9A /* TechCart */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -330,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19FEA9AB6F5B4DFFBCD7FEC3 /* Config.xcconfig in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				E04FF7D7075FEAFD413E456A /* PrivacyInfo.xcprivacy in Resources */,
@@ -786,6 +790,7 @@
 				USE_HERMES = true;
 			};
 			name = "Release-Prod";
+			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -904,6 +909,7 @@
 				USE_HERMES = true;
 			};
 			name = "Debug-UAT";
+			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -981,6 +987,7 @@
 				USE_HERMES = true;
 			};
 			name = Debug;
+			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 		};
 		83CBBA211A601CBA00E9B192 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1050,6 +1057,7 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 		};
 		AD0822072EBB6C280035BC69 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1424,6 +1432,7 @@
 				USE_HERMES = true;
 			};
 			name = "Debug-Dev";
+			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 		};
 		E28D3ECFCB9FC09B5B3CAF5D /* Debug-QA */ = {
 			isa = XCBuildConfiguration;
@@ -1488,6 +1497,7 @@
 				USE_HERMES = true;
 			};
 			name = "Debug-QA";
+			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 		};
 /* End XCBuildConfiguration section */
 
