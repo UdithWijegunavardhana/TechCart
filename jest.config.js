@@ -8,8 +8,8 @@ module.exports = {
       '|react-clone-referenced-element' +
       '|react-redux' +
       '|react-hook-form' +
-      '|@reduxjs/toolkit' + // 👈 add this
-      '|immer' + // 👈 add this
+      '|@reduxjs/toolkit' +
+      '|immer' +
       ')/)',
   ],
   moduleNameMapper: {

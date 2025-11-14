@@ -33,7 +33,6 @@ jest.mock('../app/components/InputField', () => {
     </View>
   );
 });
-
 jest.mock('../app/components/Button', () => {
   const {Text, TouchableOpacity} = require('react-native');
   return ({title, onPress, loading}) => (
@@ -49,11 +48,14 @@ describe('SignInScreen', () => {
   beforeEach(() => {
     useAuth.mockReturnValue({login: mockLogin, loading: false});
     mockLogin.mockClear();
+    jest.clearAllMocks();
   });
 
   it('renders SignInScreen correctly', () => {
-    const {getByText} = render(<SignInScreen />);
+    const {getByText, toJSON} = render(<SignInScreen />);
     expect(getByText('Log In')).toBeTruthy();
+
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('toggles password visibility', () => {
@@ -77,4 +79,21 @@ describe('SignInScreen', () => {
       expect(mockLogin).toHaveBeenCalledWith('testuser', 'password123');
     });
   });
+
+  // it('spies on the login function to verify it is called', async () => {
+  //   const spy = jest.spyOn({mockLogin}, 'mockLogin');
+
+  //   const {getByPlaceholderText, getByText} = render(<SignInScreen />);
+
+  //   fireEvent.changeText(getByPlaceholderText('Username'), 'udith');
+  //   fireEvent.changeText(getByPlaceholderText('Password'), '12345');
+  //   fireEvent.press(getByText('Log In'));
+
+  //   await waitFor(() => {
+  //     expect(spy).toHaveBeenCalledTimes(1);
+  //     expect(spy).toHaveBeenCalledWith('udith', '12345');
+  //   });
+
+  //   spy.mockRestore();
+  // });
 });

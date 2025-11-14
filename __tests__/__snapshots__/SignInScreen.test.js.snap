@@ -1,0 +1,210 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`SignInScreen renders SignInScreen correctly 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+      },
+      {
+        "paddingBottom": 0,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      {
+        "flex": 1,
+        "justifyContent": "center",
+        "paddingHorizontal": 24,
+      }
+    }
+  >
+    <Text
+      style={
+        {
+          "alignSelf": "center",
+          "fontSize": 24,
+          "fontWeight": "600",
+          "marginBottom": 32,
+        }
+      }
+    >
+      Practical Test
+    </Text>
+    <View
+      style={
+        {
+          "gap": 16,
+        }
+      }
+    >
+      <View>
+        <Feather
+          color="#666666"
+          name="user"
+          size={18}
+        />
+        <TextInput
+          onChangeText={[Function]}
+          placeholder="Username"
+          value=""
+        />
+      </View>
+      <View>
+        <Feather
+          color="#666666"
+          name="lock"
+          size={18}
+        />
+        <TextInput
+          onChangeText={[Function]}
+          placeholder="Password"
+          value=""
+        />
+        <View
+          accessibilityLabel="eye"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+            }
+          }
+        >
+          <Text>
+            eye
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text>
+          Log In
+        </Text>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={false}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignSelf": "center",
+            "marginTop": 8,
+            "opacity": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#000000",
+              "fontSize": 13,
+            }
+          }
+        >
+          Forgot Password?
+        </Text>
+      </View>
+      <Text
+        style={
+          {
+            "color": "#666666",
+            "fontSize": 12,
+            "marginTop": 24,
+            "textAlign": "center",
+          }
+        }
+      >
+        Terms and Conditions
+      </Text>
+    </View>
+  </View>
+</View>
+`;

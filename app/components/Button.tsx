@@ -1,14 +1,14 @@
 import React from 'react';
 import {
-  TouchableOpacity,
-  Text,
-  View,
-  StyleSheet,
   ActivityIndicator,
-  GestureResponderEvent,
-  ViewStyle,
-  TextStyle,
   DimensionValue,
+  GestureResponderEvent,
+  StyleSheet,
+  Text,
+  TextStyle,
+  TouchableOpacity,
+  View,
+  ViewStyle,
 } from 'react-native';
 
 import colors from '../theme/colors';
@@ -27,6 +27,7 @@ interface ButtonProps {
   textColor?: string;
   borderRadius?: number;
   height?: number;
+  testID?: string;
 }
 
 // TODO: use color const.
@@ -44,6 +45,7 @@ const Button: React.FC<ButtonProps> = ({
   textColor = colors.white,
   borderRadius = 12,
   height = 48,
+  testID
 }) => {
   const containerStyle = StyleSheet.flatten([
     styles.base,
@@ -65,6 +67,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <TouchableOpacity
+      testID={testID}
       onPress={onPress}
       disabled={disabled || loading}
       activeOpacity={0.7}

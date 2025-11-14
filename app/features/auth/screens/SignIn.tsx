@@ -1,21 +1,21 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
-import {useForm, Controller} from 'react-hook-form';
 import Feather from 'react-native-vector-icons/Feather';
 
-import {useAuth} from '../../../contexts/AuthContext';
-import InputField from '../../../components/InputField';
 import Button from '../../../components/Button';
-import {FormData, SignInStrings} from '../constants';
-import {passwordRules, usernameRules} from '../validation';
+import InputField from '../../../components/InputField';
+import { useAuth } from '../../../contexts/AuthContext';
 import colors from '../../../theme/colors';
+import { FormData, SignInStrings } from '../constants';
+import { passwordRules, usernameRules } from '../validation';
 
 const SignInScreen = () => {
   const {login, loading} = useAuth();
@@ -49,6 +49,7 @@ const SignInScreen = () => {
             rules={usernameRules}
             render={({field: {onChange, onBlur, value}}) => (
               <InputField
+                testID='UsernameInput'
                 placeholder="Username"
                 onChangeText={onChange}
                 onBlur={onBlur}
@@ -68,6 +69,7 @@ const SignInScreen = () => {
             rules={passwordRules}
             render={({field: {onChange, onBlur, value}}) => (
               <InputField
+                testID='PasswordInput'
                 placeholder="Password"
                 onChangeText={onChange}
                 onBlur={onBlur}
@@ -79,7 +81,9 @@ const SignInScreen = () => {
                 }
                 iconRight={
                   <TouchableOpacity
-                    onPress={() => setShowPassword(prev => !prev)}>
+                    onPress={() => setShowPassword(prev => !prev)}
+                    testID="togglePasswordButton"
+                    >
                     <Feather
                       name={showPassword ? 'eye-off' : 'eye'}
                       size={18}
@@ -94,11 +98,14 @@ const SignInScreen = () => {
             <Text style={styles.errorText}>{errors.password.message}</Text>
           ) : null}
           <Button
+            testID='logInButton'
             title="Log In"
             onPress={handleSubmit(onSubmit)}
             loading={loading}
           />
-          <TouchableOpacity style={styles.forgotContainer}>
+          <TouchableOpacity
+            style={styles.forgotContainer}
+            testID='forgotPasswordButton'>
             <Text style={styles.forgotText}>
               {SignInStrings.forgot_password}
             </Text>

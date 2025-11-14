@@ -1,13 +1,13 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
-  TextInput,
-  View,
   Animated,
-  StyleSheet,
-  TextInputProps,
-  ViewStyle,
-  TextStyle,
   Pressable,
+  StyleSheet,
+  TextInput,
+  TextInputProps,
+  TextStyle,
+  View,
+  ViewStyle,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
@@ -22,6 +22,7 @@ interface InputFieldProps extends TextInputProps {
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
   secureTextEntryToggle?: boolean;
+  testID?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -34,6 +35,7 @@ const InputField: React.FC<InputFieldProps> = ({
   iconRight,
   secureTextEntryToggle,
   secureTextEntry,
+  testID,
   ...rest
 }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -67,6 +69,7 @@ const InputField: React.FC<InputFieldProps> = ({
       {iconLeft && <View style={styles.leftIcon}>{iconLeft}</View>}
       <Animated.Text style={labelStyle}>{placeholder}</Animated.Text>
       <TextInput
+        testID={testID}
         value={value}
         onChangeText={onChangeText}
         style={[
