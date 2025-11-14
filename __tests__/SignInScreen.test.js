@@ -81,13 +81,16 @@ describe('SignInScreen', () => {
   });
 
   // it('spies on the login function to verify it is called', async () => {
-  //   const spy = jest.spyOn({mockLogin}, 'mockLogin');
+  //   const spy = jest.spyOn(useAuth, 'login');
 
   //   const {getByPlaceholderText, getByText} = render(<SignInScreen />);
 
   //   fireEvent.changeText(getByPlaceholderText('Username'), 'udith');
   //   fireEvent.changeText(getByPlaceholderText('Password'), '12345');
   //   fireEvent.press(getByText('Log In'));
+
+  //   expect(mockLogin).toHaveBeenCalled();
+  //   expect(mockLogin).toHaveBeenCalledWith('udith', '12345');
 
   //   await waitFor(() => {
   //     expect(spy).toHaveBeenCalledTimes(1);
