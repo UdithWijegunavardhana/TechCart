@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import {
   KeyboardAvoidingView,
@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Config from "react-native-config";
+import Config from 'react-native-config';
 import Feather from 'react-native-vector-icons/Feather';
 import Button from '../../../components/Button';
 import InputField from '../../../components/InputField';
@@ -19,38 +19,56 @@ import { passwordRules, usernameRules } from '../validation';
 
 const SignInScreen = () => {
   const BASE_URL = Config.API_URL;
-  const {login, loading} = useAuth();
+  const { login, loading } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
 
   const {
     control,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
   } = useForm<FormData>({
-    defaultValues: {
-      username: '',
-      password: '',
-    },
+    defaultValues: useMemo(
+      () => ({
+        username: '',
+        password: '',
+      }),
+      []
+    ),
   });
 
-  const onSubmit = (data: FormData) => {
-    login(data.username, data.password);
-  };
+  const togglePassword = useCallback(
+    () => setShowPassword(prev => !prev),
+    []
+  );
+
+  const onSubmit = useCallback(
+    (data: FormData) => {
+      login(data.username, data.password);
+    },
+    [login]
+  );
+
+  const HeaderTitle = useMemo(
+    () => <Text style={styles.title}>{SignInStrings.header}</Text>,
+    []
+  );
 
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.select({ios: 'padding', android: undefined})}>
+      behavior={Platform.select({ ios: 'padding', android: undefined })}
+    >
       <View style={styles.innerContainer}>
-        <Text style={styles.title}>{SignInStrings.header}</Text>
+        {HeaderTitle}
+
         <View style={styles.form}>
           <Controller
             control={control}
             name="username"
             rules={usernameRules}
-            render={({field: {onChange, onBlur, value}}) => (
+            render={({ field: { onChange, onBlur, value } }) => (
               <InputField
-                testID='UsernameInput'
+                testID="UsernameInput"
                 placeholder="Username"
                 onChangeText={onChange}
                 onBlur={onBlur}
@@ -61,30 +79,30 @@ const SignInScreen = () => {
               />
             )}
           />
-          {errors.username ? (
+          {errors.username && (
             <Text style={styles.errorText}>{errors.username.message}</Text>
-          ) : null}
+          )}
+
           <Controller
             control={control}
             name="password"
             rules={passwordRules}
-            render={({field: {onChange, onBlur, value}}) => (
+            render={({ field: { onChange, onBlur, value } }) => (
               <InputField
-                testID='PasswordInput'
+                testID="PasswordInput"
                 placeholder="Password"
                 onChangeText={onChange}
                 onBlur={onBlur}
                 value={value}
                 secureTextEntry={!showPassword}
-                secureTextEntryToggle
                 iconLeft={
                   <Feather name="lock" size={18} color={colors.textSecondary} />
                 }
                 iconRight={
                   <TouchableOpacity
-                    onPress={() => setShowPassword(prev => !prev)}
+                    onPress={togglePassword}
                     testID="togglePasswordButton"
-                    >
+                  >
                     <Feather
                       name={showPassword ? 'eye-off' : 'eye'}
                       size={18}
@@ -95,22 +113,26 @@ const SignInScreen = () => {
               />
             )}
           />
-          {errors.password ? (
+          {errors.password && (
             <Text style={styles.errorText}>{errors.password.message}</Text>
-          ) : null}
+          )}
+
           <Button
-            testID='logInButton'
+            testID="logInButton"
             title="Log In"
             onPress={handleSubmit(onSubmit)}
             loading={loading}
           />
+
           <TouchableOpacity
             style={styles.forgotContainer}
-            testID='forgotPasswordButton'>
+            testID="forgotPasswordButton"
+          >
             <Text style={styles.forgotText}>
               {SignInStrings.forgot_password}
             </Text>
           </TouchableOpacity>
+
           <Text style={styles.termsText}>
             {SignInStrings.terms_and_conditions}
           </Text>
