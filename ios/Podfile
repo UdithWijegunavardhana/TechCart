@@ -8,24 +8,24 @@ prepare_react_native_project!
 # Define environments
 ENVIRONMENTS = {
   "TechCart" => {
-    :envfile => "$(PODS_ROOT)/../../.env.prod",
-    :plist   => "Info-Prod.plist",
+    :envfile => "$(PODS_ROOT)../.env.prod",
+    :plist   => "Info.plist",
     :configs => ["Debug", "Release"]
   },
   "TechCart Dev" => {
-    :envfile => "$(PODS_ROOT)/../../.env.dev",
+    :envfile => "$(PODS_ROOT)../.env.dev",
     :plist   => "Info-Dev.plist",
     :configs => ["Debug Dev"]
   },
   "TechCart QA" => {
-    :envfile => "$(PODS_ROOT)/../../.env.qa",
+    :envfile => "$(PODS_ROOT)../.env.qa",
     :plist   => "Info-QA.plist",
-    :configs => ["Release QA"]
+    :configs => ["Debug QA"]
   },
   "TechCart UAT" => {
-    :envfile => "$(PODS_ROOT)/../../.env.uat",
+    :envfile => "$(PODS_ROOT)../.env.uat",
     :plist   => "Info-UAT.plist",
-    :configs => ["Release UAT"]
+    :configs => ["Debug UAT"]
   }
 }
 
