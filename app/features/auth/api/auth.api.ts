@@ -1,9 +1,10 @@
-import { AxiosResponse } from 'axios';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import Config from 'react-native-config';
 
 import { SignInRequest, SignInResponse } from './auth.api.types';
 
 const LOGIN_ENDPOINT = 'https://dummyjson.com/auth/login';
+const BASE_URL = Config.API_URL;
 
 // TODO: Use base API configs
 const AuthApi = {

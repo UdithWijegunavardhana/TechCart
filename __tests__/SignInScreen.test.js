@@ -5,6 +5,7 @@ import SignInScreen from '../app/features/auth/screens/SignIn';
 
 jest.mock('react-native-vector-icons/Feather', () => 'Feather');
 jest.mock('../app/contexts/AuthContext');
+
 jest.mock('../app/components/InputField', () => {
   const {TextInput, View, TouchableOpacity, Text} = require('react-native');
   return ({
@@ -54,6 +55,8 @@ describe('SignInScreen', () => {
   it('renders SignInScreen correctly', () => {
     const {getByText, toJSON} = render(<SignInScreen />);
     expect(getByText('Log In')).toBeTruthy();
+    expect(getByText('Practical Test')).toBeTruthy();
+    expect(getByText('Log In')).toBeTruthy();
 
     expect(toJSON()).toMatchSnapshot();
   });
@@ -89,8 +92,8 @@ describe('SignInScreen', () => {
   //   fireEvent.changeText(getByPlaceholderText('Password'), '12345');
   //   fireEvent.press(getByText('Log In'));
 
-  //   expect(mockLogin).toHaveBeenCalled();
-  //   expect(mockLogin).toHaveBeenCalledWith('udith', '12345');
+  //   // expect(mockLogin).toHaveBeenCalled();
+  //   // expect(mockLogin).toHaveBeenCalledWith('udith', '12345');
 
   //   await waitFor(() => {
   //     expect(spy).toHaveBeenCalledTimes(1);

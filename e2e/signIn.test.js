@@ -16,16 +16,20 @@ describe('SignIn Screen', () => {
   });
 
   it('should allow typing into username and password fields', async () => {
-    await element(by.id('UsernameInput')).tap();
-    await element(by.id('UsernameInput')).typeText('udith');
+    const usernameInput = await element(by.id('UsernameInput'));
+    const passwordInput = await element(by.id('PasswordInput'));
 
-    await element(by.id('PasswordInput')).tap();
-    await element(by.id('PasswordInput')).typeText('12345');
+    await element(usernameInput).tap();
+    await element(passwordInput).typeText('udith');
+
+    await element(usernameInput).tap();
+    await element(passwordInput).typeText('12345');
 
     // Optional: hide keyboard for smaller devices
     await device.pressBack();
 
-    await expect(element(by.id('UsernameInput'))).toHaveText('udith');
+    await expect(element(usernameInput)).toHaveText('udith');
+    await expect(element(passwordInput)).toHaveText('12345');
   });
 
   it('should toggle password visibility when tapping the eye icon', async () => {
