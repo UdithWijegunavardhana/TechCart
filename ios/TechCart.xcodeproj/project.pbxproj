@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C80B921A6F3F58F76C31292 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		19FEA9AB6F5B4DFFBCD7FEC3 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 02871F99193243B08945B986 /* Config.xcconfig */; };
 		463260B95BE46DB426D29064 /* libPods-TechCart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1DABB1A98E9E8FB9B45C1A /* libPods-TechCart.a */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -31,10 +32,10 @@
 		B92E384F39EADE218FFD51B8 /* libPods-TechCart Dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B57D08275A533E51A0B13683 /* libPods-TechCart Dev.a */; };
 		C61BBBEB954EE3ABFE0D636E /* libPods-TechCart QA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979091A32D42D239FAF2AAC0 /* libPods-TechCart QA.a */; };
 		E04FF7D7075FEAFD413E456A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
-		19FEA9AB6F5B4DFFBCD7FEC3 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 02871F99193243B08945B986 /* Config.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02871F99193243B08945B986 /* Config.xcconfig */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		05E4CFCE91A3967C63A5DBA8 /* Pods-TechCart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TechCart.debug.xcconfig"; path = "Target Support Files/Pods-TechCart/Pods-TechCart.debug.xcconfig"; sourceTree = "<group>"; };
 		124994BCD085B8E027890339 /* Pods-TechCart QA.debug-dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TechCart QA.debug-dev.xcconfig"; path = "Target Support Files/Pods-TechCart QA/Pods-TechCart QA.debug-dev.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* TechCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,7 +77,6 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED475B99C63BFFDF91243DAA /* Pods-TechCart Dev.debug-qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TechCart Dev.debug-qa.xcconfig"; path = "Target Support Files/Pods-TechCart Dev/Pods-TechCart Dev.debug-qa.xcconfig"; sourceTree = "<group>"; };
 		FCFDB94BCCED70F2AB07640E /* Pods-TechCart UAT.release-prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TechCart UAT.release-prod.xcconfig"; path = "Target Support Files/Pods-TechCart UAT/Pods-TechCart UAT.release-prod.xcconfig"; sourceTree = "<group>"; };
-		02871F99193243B08945B986 /* Config.xcconfig */ = {isa = PBXFileReference; name = "Config.xcconfig"; path = "Config.xcconfig"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.xcconfig; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -734,64 +734,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		060CB1CE216A6EF54602D0A2 /* Release-Prod */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				OTHER_LDFLAGS = "$(inherited)  ";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				USE_HERMES = true;
-			};
-			name = "Release-Prod";
-			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
-		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 05E4CFCE91A3967C63A5DBA8 /* Pods-TechCart.debug.xcconfig */;
@@ -848,6 +790,7 @@
 		};
 		5052A7A5208810E3F551190C /* Debug-UAT */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -909,10 +852,10 @@
 				USE_HERMES = true;
 			};
 			name = "Debug-UAT";
-			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -987,10 +930,10 @@
 				USE_HERMES = true;
 			};
 			name = Debug;
-			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 		};
 		83CBBA211A601CBA00E9B192 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1057,7 +1000,6 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
-			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 		};
 		AD0822072EBB6C280035BC69 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1245,14 +1187,6 @@
 			};
 			name = "Debug-UAT";
 		};
-		AD0822402EBB71460035BC69 /* Release-Prod */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C656E6A4A347EB3C1EDD096D /* Pods-TechCart.release-prod.xcconfig */;
-			buildSettings = {
-				PRODUCT_NAME = TechCart;
-			};
-			name = "Release-Prod";
-		};
 		AD0822412EBB71460035BC69 /* Debug-Dev */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2345B0627F4A3E0B0F64F467 /* Pods-TechCart Dev.debug-dev.xcconfig */;
@@ -1292,19 +1226,6 @@
 			};
 			name = "Debug-UAT";
 		};
-		AD0822442EBB71460035BC69 /* Release-Prod */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B26F23050327952351835504 /* Pods-TechCart Dev.release-prod.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
-				PRODUCT_NAME = TechCart;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-			};
-			name = "Release-Prod";
-		};
 		AD0822452EBB71460035BC69 /* Debug-Dev */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 124994BCD085B8E027890339 /* Pods-TechCart QA.debug-dev.xcconfig */;
@@ -1328,14 +1249,6 @@
 				PRODUCT_NAME = TechCart;
 			};
 			name = "Debug-UAT";
-		};
-		AD0822482EBB71460035BC69 /* Release-Prod */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C8C3BA8640B801AF32B9F170 /* Pods-TechCart QA.release-prod.xcconfig */;
-			buildSettings = {
-				PRODUCT_NAME = TechCart;
-			};
-			name = "Release-Prod";
 		};
 		AD0822492EBB71460035BC69 /* Debug-Dev */ = {
 			isa = XCBuildConfiguration;
@@ -1361,16 +1274,9 @@
 			};
 			name = "Debug-UAT";
 		};
-		AD08224C2EBB71460035BC69 /* Release-Prod */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCFDB94BCCED70F2AB07640E /* Pods-TechCart UAT.release-prod.xcconfig */;
-			buildSettings = {
-				PRODUCT_NAME = TechCart;
-			};
-			name = "Release-Prod";
-		};
 		D0C503982CA192C9A13AD835 /* Debug-Dev */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1432,10 +1338,10 @@
 				USE_HERMES = true;
 			};
 			name = "Debug-Dev";
-			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 		};
 		E28D3ECFCB9FC09B5B3CAF5D /* Debug-QA */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1497,7 +1403,6 @@
 				USE_HERMES = true;
 			};
 			name = "Debug-QA";
-			baseConfigurationReference = 02871F99193243B08945B986 /* Config.xcconfig */;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1510,7 +1415,6 @@
 				AD08223D2EBB71460035BC69 /* Debug-Dev */,
 				AD08223E2EBB71460035BC69 /* Debug-QA */,
 				AD08223F2EBB71460035BC69 /* Debug-UAT */,
-				AD0822402EBB71460035BC69 /* Release-Prod */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1523,7 +1427,6 @@
 				D0C503982CA192C9A13AD835 /* Debug-Dev */,
 				E28D3ECFCB9FC09B5B3CAF5D /* Debug-QA */,
 				5052A7A5208810E3F551190C /* Debug-UAT */,
-				060CB1CE216A6EF54602D0A2 /* Release-Prod */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1536,7 +1439,6 @@
 				AD0822412EBB71460035BC69 /* Debug-Dev */,
 				AD0822422EBB71460035BC69 /* Debug-QA */,
 				AD0822432EBB71460035BC69 /* Debug-UAT */,
-				AD0822442EBB71460035BC69 /* Release-Prod */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1549,7 +1451,6 @@
 				AD0822452EBB71460035BC69 /* Debug-Dev */,
 				AD0822462EBB71460035BC69 /* Debug-QA */,
 				AD0822472EBB71460035BC69 /* Debug-UAT */,
-				AD0822482EBB71460035BC69 /* Release-Prod */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1562,7 +1463,6 @@
 				AD0822492EBB71460035BC69 /* Debug-Dev */,
 				AD08224A2EBB71460035BC69 /* Debug-QA */,
 				AD08224B2EBB71460035BC69 /* Debug-UAT */,
-				AD08224C2EBB71460035BC69 /* Release-Prod */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
