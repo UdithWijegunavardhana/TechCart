@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -12,19 +12,40 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
 import Slider from '@react-native-community/slider';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {useDispatch, useSelector} from 'react-redux';
 
+import ErrorState from '../../../components/errorState';
+import LoadingScreen from '../../../components/LoadingScreen';
 import {HomeStackParamList} from '../../../navigation/stackNavigators/HomeStack';
+import {ProductDetailsStrings} from '../constants';
+import {
+  selectProductDetails,
+  selectProductDetailsError,
+  selectProductDetailsLoading,
+} from '../redux/productDetailsSelectors';
+import {productDetailsSagaActions} from '../saga/productDetailsSagaActions';
 
 const {width} = Dimensions.get('window');
 
 type Props = NativeStackScreenProps<HomeStackParamList, 'ProductDetail'>;
 
-// TODO: Move all strings, use color const, API integration.
+// TODO: use color const.
 const ProductDetailsScreen: React.FC<Props> = ({navigation, route}) => {
   const {productId} = route.params;
+  const dispatch = useDispatch();
+  const product = useSelector(selectProductDetails);
+  const loading = useSelector(selectProductDetailsLoading);
+  const failedToFetch = useSelector(selectProductDetailsError);
   const [quantity, setQuantity] = useState(1);
-  const unitPrice = 1598;
-  const totalPrice = quantity * unitPrice;
+  const totalPrice = quantity * (product?.price ?? 0);
+
+  const fetchProduct = useCallback(() => {
+    dispatch(productDetailsSagaActions.fetchProduct(productId));
+  }, [dispatch, productId]);
+
+  useEffect(() => {
+    fetchProduct();
+  }, [fetchProduct]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -33,49 +54,65 @@ const ProductDetailsScreen: React.FC<Props> = ({navigation, route}) => {
           <Pressable onPress={() => navigation.goBack()}>
             <Feather name="arrow-left" size={20} color="black" />
           </Pressable>
-          <Text style={styles.headerText}>Item Details</Text>
-        </View>
-        <Image
-          // source={require('./assets/iphone15.png')}
-          style={styles.image}
-          resizeMode="contain"
-        />
-        <View style={styles.infoSection}>
-          <View style={styles.titleRow}>
-            <Text style={styles.title}>iPhone 15</Text>
-            <View style={styles.ratingBadge}>
-              <Feather name="star" size={20} color="#fff" />
-              <Text style={styles.ratingText}>4.9</Text>
-            </View>
-          </View>
-          <Text style={styles.discountBadge}>discount 7%</Text>
-          <Text style={styles.description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat...
+          <Text style={styles.headerText}>
+            {ProductDetailsStrings.item_details}
           </Text>
-          <Text style={styles.subheading}>Tags</Text>
-          <Text style={styles.tags}>#iPhone #iPhone15 #Apple</Text>
-          <Text style={styles.subheading}>Quantity</Text>
-          <Slider
-            style={styles.slider}
-            minimumValue={1}
-            maximumValue={5}
-            step={1}
-            minimumTrackTintColor="#d18850"
-            thumbTintColor="#d18850"
-            value={quantity}
-            onValueChange={setQuantity}
-          />
-          <Text style={styles.quantityIndicator}>{quantity}</Text>
-          <View style={styles.footer}>
-            <Text style={styles.price}>${totalPrice.toFixed(2)}</Text>
-            <Pressable style={styles.button}>
-              <Text style={styles.buttonText}>Add to Cart</Text>
-            </Pressable>
-          </View>
         </View>
+        {loading && <LoadingScreen />}
+        {!loading && failedToFetch && (
+          <ErrorState message={failedToFetch} onRetry={fetchProduct} />
+        )}
+        {!loading && !failedToFetch && product && (
+          <>
+            <Image
+              source={{uri: product.images?.[0] ?? product.thumbnail}}
+              style={styles.image}
+              resizeMode="contain"
+            />
+            <View style={styles.infoSection}>
+              <View style={styles.titleRow}>
+                <Text style={styles.title}>{product.title}</Text>
+                <View style={styles.ratingBadge}>
+                  <Feather name="star" size={20} color="#fff" />
+                  <Text style={styles.ratingText}>{product.rating}</Text>
+                </View>
+              </View>
+              <Text style={styles.discountBadge}>
+                {ProductDetailsStrings.discount}{' '}
+                {Math.round(product.discountPercentage)}%
+              </Text>
+              <Text style={styles.description}>{product.description}</Text>
+              <Text style={styles.subheading}>
+                {ProductDetailsStrings.tags}
+              </Text>
+              <Text style={styles.tags}>
+                {product.tags.map(tag => `#${tag}`).join(' ')}
+              </Text>
+              <Text style={styles.subheading}>
+                {ProductDetailsStrings.quantity}
+              </Text>
+              <Slider
+                style={styles.slider}
+                minimumValue={1}
+                maximumValue={5}
+                step={1}
+                minimumTrackTintColor="#d18850"
+                thumbTintColor="#d18850"
+                value={quantity}
+                onValueChange={setQuantity}
+              />
+              <Text style={styles.quantityIndicator}>{quantity}</Text>
+              <View style={styles.footer}>
+                <Text style={styles.price}>${totalPrice.toFixed(2)}</Text>
+                <Pressable style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    {ProductDetailsStrings.add_to_cart}
+                  </Text>
+                </Pressable>
+              </View>
+            </View>
+          </>
+        )}
       </ScrollView>
     </SafeAreaView>
   );

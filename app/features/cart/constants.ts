@@ -13,7 +13,9 @@ export const dummyCartData: CartItem[] = [
     name: 'iPhone 14',
     price: 699.99,
     quantity: 1,
-    image: '@assets/iphone14.png',
+    image: {
+      uri: 'https://cdn.dummyjson.com/product-images/smartphones/iphone-13-pro/thumbnail.webp',
+    },
     discount: null,
   },
   {
@@ -21,7 +23,9 @@ export const dummyCartData: CartItem[] = [
     name: 'iPhone 15',
     price: 1598.0,
     quantity: 2,
-    image: '@assets/iphone15.png',
+    image: {
+      uri: 'https://cdn.dummyjson.com/product-images/smartphones/iphone-x/thumbnail.webp',
+    },
     discount: 0.07,
   },
 ];
