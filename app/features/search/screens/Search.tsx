@@ -6,8 +6,8 @@ import {
   FlatList,
   Image,
   StyleSheet,
-  SafeAreaView,
 } from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
 
 const recentSearches = ['iPhone X', 'iPhone SE'];

@@ -7,8 +7,8 @@ import {
   Pressable,
   Dimensions,
   ScrollView,
-  SafeAreaView,
 } from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
 import Slider from '@react-native-community/slider';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
