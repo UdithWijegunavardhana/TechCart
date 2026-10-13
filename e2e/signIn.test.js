@@ -8,7 +8,7 @@ describe('SignIn Screen', () => {
   });
 
   it('should display the SignIn screen correctly', async () => {
-    await expect(element(by.text('Practical Test'))).toBeVisible();
+    await expect(element(by.text('TechCart'))).toBeVisible();
     await expect(element(by.id('UsernameInput'))).toBeVisible();
     await expect(element(by.id('PasswordInput'))).toBeVisible();
     await expect(element(by.id('logInButton'))).toBeVisible();

@@ -1,6 +1,6 @@
 # TechCart 🛒 — React Native Practical Assessment
 
-A simple, modern e-commerce mobile app built with **React Native 0.80.1**, demonstrating state management, side effects, navigation, form validation, and modular architecture.
+A simple, modern e-commerce mobile app built with **React Native 0.78.2**, demonstrating state management, side effects, navigation, form validation, and modular architecture.
 
 This project was created as a practical assessment and uses real APIs to showcase user authentication, product listing, detail viewing, and cart handling.
 
@@ -14,11 +14,13 @@ This project was created as a practical assessment and uses real APIs to showcas
 | **Redux Toolkit** | Global state management |
 | **Redux-Saga** | Handling async logic (API calls, session restore, etc.) |
 | **React Navigation** | Stack and bottom tab navigators |
-| **MMKV Encrypted Storage** | Secure token persistence |
+| **MMKV** | Fast key-value storage for the session (**not encrypted**, see note below) |
 | **Axios** | Typed HTTP client with retry support |
 | **react-hook-form** | Elegant form handling and validation |
 | **Reusable UI Components** | Buttons, Inputs, ProductCards, Error & Loading screens |
 | **API Integration** | Uses `https://dummyjson.com` for products and auth |
+
+> **Security note**: MMKV is used here unencrypted to keep the example simple. In a real app, store access/refresh tokens in the iOS Keychain or Android Keystore (for example with `react-native-keychain`), not in MMKV.
 
 ---
 
@@ -60,6 +62,42 @@ npm start
 # OR using Yarn
 yarn start
 ```
+
+---
+
+## Environments
+
+The app has four environments, configured with [react-native-config](https://github.com/lugg/react-native-config). Each one reads its own env file at the project root:
+
+| Environment | Env file | Android | iOS scheme |
+|-------------|----------|---------|------------|
+| Dev  | `.env.dev` | `yarn android:dev`  | `yarn ios:dev` (`TechCart Dev`) |
+| QA   | `.env.qa`  | `yarn android:qa`   | `yarn ios:qa` (`TechCart QA`) |
+| UAT  | `.env.uat` | `yarn android:uat`  | `yarn ios:uat` (`TechCart UAT`) |
+| Prod | `.env`     | `yarn android:prod` | `yarn ios:prod` (`TechCart`) |
+
+The `.env*` files are not committed. Create them from the template:
+
+```sh
+cp .env.example .env && cp .env.example .env.dev && cp .env.example .env.qa && cp .env.example .env.uat
+```
+
+The API base URL is read from `API_BASE_URL` in `app/api/axiosInstance.ts`. Values are baked in at **build time**, so rebuild the app after changing an env file.
+
+- **Android**: product flavors (`dev`, `qa`, `uat`, `prod`) pick the file, see `envConfigFiles` in `android/app/build.gradle`. Build one variant per Gradle run.
+- **iOS**: the Xcode configurations `Debug-<Env>` and `Release-<Env>` pick the file, see `ENVIRONMENTS` in `ios/Podfile`. Run `cd ios && pod install` after changing it.
+
+---
+
+## Running tests
+
+```sh
+yarn test            # unit tests (Jest + React Native Testing Library, matchers included)
+yarn lint            # ESLint
+npx tsc --noEmit     # type check
+```
+
+End-to-end tests use Detox, see [End-to-end tests](#end-to-end-tests-detox-android). `e2e/exercises/` holds an intentionally buggy test used as a class exercise. It is never run.
 
 ---
 

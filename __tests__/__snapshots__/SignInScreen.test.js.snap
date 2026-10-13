@@ -34,7 +34,7 @@ exports[`SignInScreen renders SignInScreen correctly 1`] = `
         }
       }
     >
-      Practical Test
+      TechCart
     </Text>
     <View
       style={
