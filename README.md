@@ -59,3 +59,27 @@ npm start
 
 # OR using Yarn
 yarn start
+```
+
+---
+
+## Release signing (Android)
+
+Release builds are signed with your upload key when these properties exist in `~/.gradle/gradle.properties` (**not** in this repo):
+
+```properties
+MYAPP_UPLOAD_STORE_FILE=/absolute/path/to/upload.keystore
+MYAPP_UPLOAD_STORE_PASSWORD=...
+MYAPP_UPLOAD_KEY_ALIAS=...
+MYAPP_UPLOAD_KEY_PASSWORD=...
+```
+
+Without them, Gradle prints a warning and falls back to the **debug** key, so `yarn android:prod:build` still works locally. Never publish such a build.
+
+To create a keystore, follow the [React Native signing guide](https://reactnative.dev/docs/signed-apk-android). Never commit a keystore or its passwords.
+
+Check which key signed an APK:
+
+```sh
+$ANDROID_HOME/build-tools/<version>/apksigner verify --print-certs android/app/build/outputs/apk/prod/release/app-prod-release.apk
+```
