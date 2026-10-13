@@ -1,6 +1,7 @@
 module.exports = {
   preset: 'react-native',
-  setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
+  // Detox tests under e2e/ run through e2e/jest.config.js, not here.
+  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/e2e/'],
   transformIgnorePatterns: [
     'node_modules/(?!(react-native' +
       '|@react-native' +

@@ -52,7 +52,7 @@
       </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
-      buildConfiguration = "Debug-UAT"
+      buildConfiguration = "Release-UAT"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
@@ -72,7 +72,7 @@
       buildConfiguration = "Debug-UAT">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Debug-UAT"
+      buildConfiguration = "Release-UAT"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

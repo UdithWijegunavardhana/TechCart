@@ -5,27 +5,39 @@ require Pod::Executable.execute_command('node', ['-p',
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
+# Custom configuration names must be declared, otherwise CocoaPods treats every
+# name other than "Debug" as a release configuration (no DEBUG=1 in the Pods).
+project 'TechCart',
+  'Debug'       => :debug,
+  'Release'     => :release,
+  'Debug-Dev'   => :debug,
+  'Release-Dev' => :release,
+  'Debug-QA'    => :debug,
+  'Release-QA'  => :release,
+  'Debug-UAT'   => :debug,
+  'Release-UAT' => :release
+
 # Define environments
 ENVIRONMENTS = {
   "TechCart" => {
-    :envfile => "$(PODS_ROOT)../.env",
+    :envfile => "$(PODS_ROOT)/../../.env",
     :plist   => "Info.plist",
     :configs => ["Debug", "Release"]
   },
   "TechCart Dev" => {
-    :envfile => "$(PODS_ROOT)../.env.dev",
+    :envfile => "$(PODS_ROOT)/../../.env.dev",
     :plist   => "Info-Dev.plist",
-    :configs => ["Debug Dev"]
+    :configs => ["Debug-Dev", "Release-Dev"]
   },
   "TechCart QA" => {
-    :envfile => "$(PODS_ROOT)../.env.qa",
+    :envfile => "$(PODS_ROOT)/../../.env.qa",
     :plist   => "Info-QA.plist",
-    :configs => ["Debug QA Realeae QA"]
+    :configs => ["Debug-QA", "Release-QA"]
   },
   "TechCart UAT" => {
-    :envfile => "$(PODS_ROOT)../.env.uat",
+    :envfile => "$(PODS_ROOT)/../../.env.uat",
     :plist   => "Info-UAT.plist",
-    :configs => ["Debug UAT Release UAT"]
+    :configs => ["Debug-UAT", "Release-UAT"]
   }
 }
 
@@ -68,6 +80,13 @@ end
 
 post_install do |installer|
   react_native_post_install(installer)
+
+  # Xcode 26's clang rejects fmt 11.0.2's consteval format strings under C++20.
+  installer.pods_project.targets.select { |t| t.name == 'fmt' }.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++17'
+    end
+  end
 
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|

@@ -4,7 +4,7 @@ export type FormData = {
 };
 
 export const SignInStrings = {
-  header: 'Practical Test',
+  header: 'TechCart',
   forgot_password: 'Forgot Password?',
   terms_and_conditions: 'Terms and Conditions',
 };

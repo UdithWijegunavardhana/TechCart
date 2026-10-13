@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import {
   FlatList,
   Image,
+  ListRenderItem,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -24,10 +25,11 @@ import {
   selectHomeLoading,
   selectHomeProducts,
 } from '../redux/homeSelectors';
+import { HomeProduct } from '../redux/homeSlice';
 import { homeSagaActions } from '../saga/homeSagaActions';
 
 const HomeScreen = () => {
-  type HomeNavigationProp = StackNavigationProp<HomeStackParamList>;
+  type HomeNavigationProp = NativeStackNavigationProp<HomeStackParamList>;
   const dispatch = useDispatch();
   const navigation = useNavigation<HomeNavigationProp>();
 
@@ -37,11 +39,15 @@ const HomeScreen = () => {
 
   useEffect(() => {
     dispatch(homeSagaActions.fetchProducts());
-  }, []);
+  }, [dispatch]);
+
+  const handleRetry = useCallback(() => {
+    dispatch(homeSagaActions.fetchProducts());
+  }, [dispatch]);
 
   const keyExtractor = useCallback((item: { id: { toString: () => any; }; }) => item.id.toString(), []);
 
-  const renderItem = useCallback(
+  const renderItem = useCallback<ListRenderItem<HomeProduct>>(
     ({item}) => (
       <ProductCard
         title={item.title}
@@ -95,17 +101,20 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       {loading && <LoadingScreen />}
-      {failedToFetch && <ErrorState message={failedToFetch} />}
-
-      <FlatList
-        ListHeaderComponent={HeaderComponent}
-        data={products}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        numColumns={2}
-        contentContainerStyle={listContentStyle}
-        showsVerticalScrollIndicator={false}
-      />
+      {!loading && failedToFetch && (
+        <ErrorState message={failedToFetch} onRetry={handleRetry} />
+      )}
+      {!loading && !failedToFetch && (
+        <FlatList
+          ListHeaderComponent={HeaderComponent}
+          data={products}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          numColumns={2}
+          contentContainerStyle={listContentStyle}
+          showsVerticalScrollIndicator={false}
+        />
+      )}
     </SafeAreaView>
   );
 };

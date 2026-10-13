@@ -14,7 +14,7 @@ project.ext.envConfigFiles = [
     devdebug: ".env.dev",
 ]
 
-// apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -98,6 +98,9 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        // Detox: https://wix.github.io/Detox/docs/introduction/project-setup
+        testBuildType System.getProperty('testBuildType', 'debug')
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     signingConfigs {
         debug {
@@ -143,7 +146,6 @@ android {
         }
         prod {
             dimension "env"
-            signingConfig signingConfigs.release
             resValue "string", "app_name", "TechCart"
             resValue "string", "build_config_package", "com.techcart"
         }
@@ -153,9 +155,14 @@ android {
             signingConfig signingConfigs.debug
         }
         release {
-            // Caution! In production, you need to generate your own keystore file.
-            // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            // Signed with the upload key when MYAPP_UPLOAD_STORE_FILE (and related)
+            // properties exist in ~/.gradle/gradle.properties, see README "Release signing".
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                signingConfig signingConfigs.release
+            } else {
+                logger.warn('WARNING: MYAPP_UPLOAD_STORE_FILE is not set. Release builds are signed with the DEBUG key and must not be published.')
+                signingConfig signingConfigs.debug
+            }
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -171,4 +178,8 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    // Detox end-to-end tests
+    androidTestImplementation('com.wix:detox:+')
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
 }

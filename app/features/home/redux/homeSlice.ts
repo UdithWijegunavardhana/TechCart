@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface HomeProduct {
+export interface HomeProduct {
   image: string;
   id: number;
   title: string;

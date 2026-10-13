@@ -6,8 +6,7 @@ import {SignInRequest, SignInResponse} from './auth.api.types';
 const AuthService = {
   login: async (data: SignInRequest): Promise<SignInResponse> => {
     try {
-      const response = await AuthApi.loginAPI(data);
-      return response.data;
+      return await AuthApi.loginAPI(data);
     } catch (error) {
       const err = error as AxiosError;
       console.error('AuthService - login error:', err.message);

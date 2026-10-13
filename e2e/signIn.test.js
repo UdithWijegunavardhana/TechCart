@@ -8,32 +8,32 @@ describe('SignIn Screen', () => {
   });
 
   it('should display the SignIn screen correctly', async () => {
-    expect(element(by.text('Practical Test'))).toBeVisible();
-    expect(element(by.id('UsernameInput'))).toBeVisible();
-    expect(element(by.id('PasswordInput'))).toBeVisible();
-    expect(element(by.id('logInButton'))).toBeVisible();
-    expect(element(by.id('forgotPasswordButton'))).toBeVisible();
+    await expect(element(by.text('TechCart'))).toBeVisible();
+    await expect(element(by.id('UsernameInput'))).toBeVisible();
+    await expect(element(by.id('PasswordInput'))).toBeVisible();
+    await expect(element(by.id('logInButton'))).toBeVisible();
+    await expect(element(by.id('forgotPasswordButton'))).toBeVisible();
   });
 
   it('should allow typing into username and password fields', async () => {
-    const usernameInput = await element(by.id('UsernameInput'));
-    const passwordInput = await element(by.id('PasswordInput'));
+    const usernameInput = element(by.id('UsernameInput'));
+    const passwordInput = element(by.id('PasswordInput'));
 
-    await element(usernameInput).tap();
-    await element(passwordInput).typeText('udith');
+    await usernameInput.tap();
+    await usernameInput.typeText('udith');
 
-    await element(usernameInput).tap();
-    await element(passwordInput).typeText('12345');
+    await passwordInput.tap();
+    await passwordInput.typeText('12345');
 
     // Optional: hide keyboard for smaller devices
     await device.pressBack();
 
-    await expect(element(usernameInput)).toHaveText('udith');
-    await expect(element(passwordInput)).toHaveText('12345');
+    await expect(usernameInput).toHaveText('udith');
+    await expect(passwordInput).toHaveText('12345');
   });
 
   it('should toggle password visibility when tapping the eye icon', async () => {
-    const eyeIcon = element(by.id('forgotPasswordButton'));
+    const eyeIcon = element(by.id('togglePasswordButton'));
     await expect(eyeIcon).toBeVisible();
 
     await eyeIcon.tap();

@@ -55,7 +55,7 @@ describe('SignInScreen', () => {
   it('renders SignInScreen correctly', () => {
     const {getByText, toJSON} = render(<SignInScreen />);
     expect(getByText('Log In')).toBeTruthy();
-    expect(getByText('Practical Test')).toBeTruthy();
+    expect(getByText('TechCart')).toBeTruthy();
     expect(getByText('Log In')).toBeTruthy();
 
     expect(toJSON()).toMatchSnapshot();

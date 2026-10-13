@@ -5,7 +5,7 @@ import {authSagaActions} from './authSagaActions';
 import {loginSuccess, loginFailure, logout} from '../redux/authSlice';
 import {SignInResponse} from '../api/auth.api.types';
 import {storage, StorageKeys} from '../../../utils/storage';
-import {removeAuthHeader} from '../../../api/axiosInstance';
+import {removeAuthHeader, setAuthHeader} from '../../../api/axiosInstance';
 
 function* loginSaga(
   action: ReturnType<typeof authSagaActions.login>,
@@ -15,11 +15,14 @@ function* loginSaga(
       AuthService.login,
       action.payload,
     );
+    // Keep tokens out of the stored user object; they have their own keys.
+    const {accessToken, refreshToken, ...user} = response;
+    yield call(setAuthHeader, accessToken);
     yield put(
       loginSuccess({
-        token: response.accessToken,
-        refreshToken: response.refreshToken ?? '',
-        user: response,
+        token: accessToken,
+        refreshToken: refreshToken ?? '',
+        user,
       }),
     );
     yield call(
@@ -32,6 +35,7 @@ function* loginSaga(
       StorageKeys.REFRESH_TOKEN,
       response.refreshToken,
     );
+    yield call([storage, 'set'], StorageKeys.USER, JSON.stringify(user));
   } catch (error: any) {
     yield put(loginFailure(error?.response?.data?.message || 'Login failed'));
   }
@@ -41,10 +45,13 @@ function* restoreSessionSaga(): Generator<any, void, void> {
   try {
     const token = storage.getString(StorageKeys.ACCESS_TOKEN);
     const refreshToken = storage.getString(StorageKeys.REFRESH_TOKEN);
+    const storedUser = storage.getString(StorageKeys.USER);
+    const user = storedUser ? JSON.parse(storedUser) : null;
 
     if (token) {
+      yield call(setAuthHeader, token);
       yield put(
-        loginSuccess({token, refreshToken: refreshToken ?? '', user: null}),
+        loginSuccess({token, refreshToken: refreshToken ?? '', user}),
       );
     } else {
       yield put(logout());
@@ -58,6 +65,7 @@ function* logoutSaga() {
   try {
     yield call([storage, 'delete'], StorageKeys.ACCESS_TOKEN);
     yield call([storage, 'delete'], StorageKeys.REFRESH_TOKEN);
+    yield call([storage, 'delete'], StorageKeys.USER);
 
     yield call(removeAuthHeader);
     yield put(logout());

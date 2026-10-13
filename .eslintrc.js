@@ -1,5 +1,17 @@
 module.exports = {
   root: true,
   extends: '@react-native',
-  files: ['e2e/**/*.js'],
+  overrides: [
+    {
+      files: ['e2e/**/*.js'],
+      env: {jest: true},
+      globals: {
+        device: 'readonly',
+        element: 'readonly',
+        by: 'readonly',
+        waitFor: 'readonly',
+        detox: 'readonly',
+      },
+    },
+  ],
 };

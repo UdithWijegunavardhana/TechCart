@@ -6,20 +6,17 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  SafeAreaView,
 } from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
 
 import {useAuth} from '../../../contexts/AuthContext';
 
 // TODO: Move all strings, use color const, API integration.
 const ProfileScreen = () => {
-  const {logout} = useAuth();
-  const user = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    // avatar: require('@assets/avatar.png'),
-  };
+  const {user, logout} = useAuth();
+  const name = `${user?.firstName ?? ''} ${user?.lastName ?? ''}`.trim();
+  const avatar = user?.image ? {uri: user.image} : undefined;
 
   const menuItems = [
     {icon: 'shopping-bag', label: 'Orders'},
@@ -40,10 +37,10 @@ const ProfileScreen = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.profileCard}>
-          <Image source={user.avatar} style={styles.avatar} />
+          <Image source={avatar} style={styles.avatar} />
           <View>
-            <Text style={styles.name}>{user.name}</Text>
-            <Text style={styles.email}>{user.email}</Text>
+            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.email}>{user?.email}</Text>
           </View>
           <TouchableOpacity style={styles.editIcon}>
             <Feather name="edit" size={16} color="#333" />

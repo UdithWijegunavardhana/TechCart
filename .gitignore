@@ -77,3 +77,6 @@ yarn-error.log
 ios/tmp.xcconfig
 
 .env*
+
+# Keep the committed template
+!.env.example
