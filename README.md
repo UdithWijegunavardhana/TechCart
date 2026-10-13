@@ -83,3 +83,21 @@ Check which key signed an APK:
 ```sh
 $ANDROID_HOME/build-tools/<version>/apksigner verify --print-certs android/app/build/outputs/apk/prod/release/app-prod-release.apk
 ```
+
+---
+
+## End-to-end tests (Detox, Android)
+
+Detox runs against the `dev` flavor in debug and the `prod` flavor in release (see `.detoxrc.js`).
+
+1. Create an Android emulator (AVD) in Android Studio. The config expects one named `Pixel_API_35`.
+   To use a different AVD, list yours with `emulator -list-avds` and set `avdName` in `.detoxrc.js` (`devices.emulator`).
+2. Start Metro: `yarn start`
+3. Build and run:
+
+```sh
+yarn detox:build:android
+yarn detox:test:android
+```
+
+The native test setup lives in `android/app/src/androidTest/java/com/techcart/DetoxTest.java`.

@@ -98,6 +98,9 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        // Detox: https://wix.github.io/Detox/docs/introduction/project-setup
+        testBuildType System.getProperty('testBuildType', 'debug')
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     signingConfigs {
         debug {
@@ -175,4 +178,8 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    // Detox end-to-end tests
+    androidTestImplementation('com.wix:detox:+')
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
 }

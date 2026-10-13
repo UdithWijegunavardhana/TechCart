@@ -25,16 +25,16 @@ module.exports = {
     },
     'android.debug': {
       type: 'android.apk',
-      binaryPath: 'android/app/build/outputs/apk/debug/app-debug.apk',
+      binaryPath: 'android/app/build/outputs/apk/dev/debug/app-dev-debug.apk',
       build:
-        'cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug',
+        'cd android && ./gradlew assembleDevDebug assembleDevDebugAndroidTest -DtestBuildType=debug',
       reversePorts: [8081],
     },
     'android.release': {
       type: 'android.apk',
-      binaryPath: 'android/app/build/outputs/apk/release/app-release.apk',
+      binaryPath: 'android/app/build/outputs/apk/prod/release/app-prod-release.apk',
       build:
-        'cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release',
+        'cd android && ./gradlew assembleProdRelease assembleProdReleaseAndroidTest -DtestBuildType=release',
     },
   },
   devices: {
@@ -53,7 +53,8 @@ module.exports = {
     emulator: {
       type: 'android.emulator',
       device: {
-        avdName: 'Pixel_3a_API_30_x86',
+        // Name of an AVD on your machine: run `emulator -list-avds` and edit this value.
+        avdName: 'Pixel_API_35',
       },
     },
   },
