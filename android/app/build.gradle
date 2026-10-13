@@ -14,7 +14,7 @@ project.ext.envConfigFiles = [
     devdebug: ".env.dev",
 ]
 
-// apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 /**
  * This is the configuration block to customize your React Native Android app.

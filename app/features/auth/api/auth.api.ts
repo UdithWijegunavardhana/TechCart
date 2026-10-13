@@ -1,18 +1,11 @@
-import axios, { AxiosResponse } from 'axios';
-import Config from 'react-native-config';
-
+import BaseApi from '../../../api/base.api';
 import { SignInRequest, SignInResponse } from './auth.api.types';
 
-const LOGIN_ENDPOINT = 'https://dummyjson.com/auth/login';
-const BASE_URL = Config.API_URL;
+const LOGIN_ENDPOINT = '/auth/login';
 
-// TODO: Use base API configs
-const AuthApi = {
-  loginAPI: (data: SignInRequest): Promise<AxiosResponse<SignInResponse>> => {
-    return axios.post(LOGIN_ENDPOINT, data, {
-      headers: { 'Content-Type': 'application/json' },
-    });
-  },
-};
+class AuthApi extends BaseApi {
+  loginAPI = (data: SignInRequest): Promise<SignInResponse> =>
+    this.postAsync<SignInResponse>(LOGIN_ENDPOINT, undefined, data);
+}
 
-export default AuthApi;
+export default new AuthApi();

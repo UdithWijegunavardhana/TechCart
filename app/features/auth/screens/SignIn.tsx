@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Config from 'react-native-config';
 import Feather from 'react-native-vector-icons/Feather';
 import Button from '../../../components/Button';
 import InputField from '../../../components/InputField';
@@ -18,7 +17,6 @@ import { FormData, SignInStrings } from '../constants';
 import { passwordRules, usernameRules } from '../validation';
 
 const SignInScreen = () => {
-  const BASE_URL = Config.API_URL;
   const { login, loading } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
 

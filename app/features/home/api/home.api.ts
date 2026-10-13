@@ -1,16 +1,11 @@
-import axios, { AxiosResponse } from 'axios';
-
+import BaseApi from '../../../api/base.api';
 import { HomeProductsResponse } from './home.api.types';
 
-const GET_PRODUCTS_ENDPOINT = 'https://dummyjson.com/products';
+const GET_PRODUCTS_ENDPOINT = '/products';
 
-// TODO: Use base API configs
-const HomeProductApi = {
-  getAllProducts: (): Promise<AxiosResponse<HomeProductsResponse>> => {
-    return axios.get(GET_PRODUCTS_ENDPOINT, {
-      headers: {'Content-Type': 'application/json'},
-    });
-  },
-};
+class HomeProductApi extends BaseApi {
+  getAllProducts = (): Promise<HomeProductsResponse> =>
+    this.getAsync<HomeProductsResponse>(GET_PRODUCTS_ENDPOINT);
+}
 
-export default HomeProductApi;
+export default new HomeProductApi();

@@ -6,8 +6,7 @@ import HomeProductApi from './home.api';
 const ProductService = {
   getAll: async (): Promise<HomeProductsResponse> => {
     try {
-      const response = await HomeProductApi.getAllProducts();
-      return response.data;
+      return await HomeProductApi.getAllProducts();
     } catch (error) {
       const err = error as AxiosError;
       console.error('ProductService - getAll error:', err.message);
