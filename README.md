@@ -84,7 +84,7 @@ cp .env.example .env && cp .env.example .env.dev && cp .env.example .env.qa && c
 
 The API base URL is read from `API_BASE_URL` in `app/api/axiosInstance.ts`. Values are baked in at **build time**, so rebuild the app after changing an env file.
 
-- **Android**: product flavors (`dev`, `qa`, `uat`, `prod`) pick the file, see `envConfigFiles` in `android/app/build.gradle`. Build one variant per Gradle run.
+- **Android**: product flavors (`dev`, `qa`, `uat`, `prod`) pick the file, see `envConfigFiles` in `android/app/build.gradle`. Build one variant per Gradle run. `dev`, `qa` and `uat` are debug builds and need Metro (`yarn start`); `yarn android:prod` installs a release build that bundles the JS.
 - **iOS**: the Xcode configurations `Debug-<Env>` and `Release-<Env>` pick the file, see `ENVIRONMENTS` in `ios/Podfile`. Run `cd ios && pod install` after changing it.
 
 ---
@@ -97,7 +97,15 @@ yarn lint            # ESLint
 npx tsc --noEmit     # type check
 ```
 
-End-to-end tests use Detox, see [End-to-end tests](#end-to-end-tests-detox-android). `e2e/exercises/` holds an intentionally buggy test used as a class exercise. It is never run.
+End-to-end tests use Detox on Android (Metro must be running, and an emulator named in `.detoxrc.js` must exist, see [End-to-end tests](#end-to-end-tests-detox-android)):
+
+```sh
+yarn start                  # terminal 1
+yarn detox:build:android    # terminal 2
+yarn detox:test:android
+```
+
+`e2e/exercises/` holds an intentionally buggy test used as a class exercise. It is never run.
 
 ---
 
@@ -112,7 +120,12 @@ MYAPP_UPLOAD_KEY_ALIAS=...
 MYAPP_UPLOAD_KEY_PASSWORD=...
 ```
 
-Without them, Gradle prints a warning and falls back to the **debug** key, so `yarn android:prod:build` still works locally. Never publish such a build.
+Without them, Gradle prints a warning and falls back to the **debug** key, so a local build still works. Never publish such a build.
+
+```sh
+yarn android:prod:build       # signed APK: android/app/build/outputs/apk/prod/release/
+yarn android:prod:build_aab   # signed AAB for the Play Store
+```
 
 To create a keystore, follow the [React Native signing guide](https://reactnative.dev/docs/signed-apk-android). Never commit a keystore or its passwords.
 
@@ -128,7 +141,7 @@ $ANDROID_HOME/build-tools/<version>/apksigner verify --print-certs android/app/b
 
 Detox runs against the `dev` flavor in debug and the `prod` flavor in release (see `.detoxrc.js`).
 
-1. Create an Android emulator (AVD) in Android Studio. The config expects one named `Pixel_API_35`.
+1. Install the **Android Emulator** package (Android Studio, SDK Manager) and create an AVD in Device Manager. The config expects one named `Pixel_API_35`.
    To use a different AVD, list yours with `emulator -list-avds` and set `avdName` in `.detoxrc.js` (`devices.emulator`).
 2. Start Metro: `yarn start`
 3. Build and run:
