@@ -20,12 +20,12 @@ ENVIRONMENTS = {
   "TechCart QA" => {
     :envfile => "$(PODS_ROOT)../.env.qa",
     :plist   => "Info-QA.plist",
-    :configs => ["Debug QA"]
+    :configs => ["Debug QA Realeae QA"]
   },
   "TechCart UAT" => {
     :envfile => "$(PODS_ROOT)../.env.uat",
     :plist   => "Info-UAT.plist",
-    :configs => ["Debug UAT"]
+    :configs => ["Debug UAT Release UAT"]
   }
 }
 

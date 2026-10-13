@@ -72,7 +72,7 @@
       buildConfiguration = "Debug-UAT">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug-UAT"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
