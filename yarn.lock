@@ -2739,23 +2739,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/stack@npm:^7.4.2":
-  version: 7.6.1
-  resolution: "@react-navigation/stack@npm:7.6.1"
-  dependencies:
-    "@react-navigation/elements": "npm:^2.8.0"
-    color: "npm:^4.2.3"
-  peerDependencies:
-    "@react-navigation/native": ^7.1.19
-    react: ">= 18.2.0"
-    react-native: "*"
-    react-native-gesture-handler: ">= 2.0.0"
-    react-native-safe-area-context: ">= 4.0.0"
-    react-native-screens: ">= 4.0.0"
-  checksum: 10c0/adf7efec9807a50a3c1f16d96c235293daa17207984377c7f4c0ff57bb2d3fff28bbf6de5d4b6b02b0f909b26336320c7fc1e71d4939aad04bd6e1b2f1e01a7d
-  languageName: node
-  linkType: hard
-
 "@redux-saga/core@npm:^1.4.2":
   version: 1.4.2
   resolution: "@redux-saga/core@npm:1.4.2"
@@ -3550,7 +3533,6 @@ __metadata:
     "@react-navigation/elements": "npm:^2.5.2"
     "@react-navigation/native": "npm:^7.1.14"
     "@react-navigation/native-stack": "npm:^7.3.21"
-    "@react-navigation/stack": "npm:^7.4.2"
     "@reduxjs/toolkit": "npm:^2.8.2"
     "@testing-library/jest-native": "npm:^5.4.3"
     "@testing-library/react-native": "npm:^13.3.3"
